@@ -6,15 +6,18 @@
     </div>
     <div class="box">
         <% for( let i=0;i < ListItems.length;i++ ) { %>
-            <div class="item" id="<%=i%>">
-                <input type="checkbox">
-                <p>
-                    <%= ListItems[i] %>
-                </p>
-            </div>
+            <form action="/delete" method="post">
+                <div class="item" id="<%=i%>">
+                    <input class="listbox" type="checkbox" name="checkboxName" value="<%= ListItems[i]._id %>" onchange="this.form.submit()">
+                    <p>
+                        <%= ListItems[i].name %>
+                    </p>
+                </div>
+                <input type="hidden" name="ListName" value="<%= Title %>">
+            </form>
             <% } %>
                 <form class="item" action="/" method="post">
-                    <input type="text" name="textValue" id="" placeholder="New Item" autocomplete="off">
+                    <input type="text" name="textValue" placeholder="New Item" autocomplete="off">
                     <button type="submit" name="button" value="<%= Title %>">+</button>
                 </form>
     </div>
